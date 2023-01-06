@@ -1,18 +1,19 @@
 import React from 'react';
 import { useLocation } from "react-router-dom";
 import { Header } from '../components';
-import Tooltip from '@mui/material/Button';
-import { pieChartData } from '../data/dummy';
-import { ChartsHeader, Pie as PieChart } from '../components';
-import { xToCoordinate } from '@syncfusion/ej2/maps';
+import { useState } from 'react';
 
-const ReportProcessed = () => {
+import {TooltipComponent} from '@syncfusion/ej2-react-popups';
+import { Pie as PieChart } from '../components';
+import configData from "../config.json";
+
+const TxtAnalysisReport = () => {
   const location = useLocation();
   const stateData = location.state
-  var responseobj = stateData.content;
-  const texturl = 'http://localhost:8080/training_new_api';
-  const domain = 'liabilities'
-
+  let responseobj = stateData.content;
+  const domain = stateData.domain;
+  const texturl = configData.API_SERVER + '/training_new_api';
+  const [message, setMessage] = useState("");
   const handleClick = async (label, content) => {
     //e.preventDefault();
     //console.log('this is:'+ label);
@@ -55,7 +56,7 @@ const ReportProcessed = () => {
     }
   
     let tooltip = 'Label :' + responseobj[hl_obj].label + '; Risk : ' + responseobj[hl_obj].flag + '; Presence Score : ' + responseobj[hl_obj].p_score + '; Context Score : ' + responseobj[hl_obj].c_score + ';';
-    hl_resp.push(<div key={hl_obj} className={mark_classname} onClick={() => handleClick(responseobj[hl_obj].label, responseobj[hl_obj].c_sentence)}><Tooltip title={tooltip} arrow='True'>{responseobj[hl_obj].c_sentence}</Tooltip></div>);
+    hl_resp.push(<div key={hl_obj} className={mark_classname} onClick={() => handleClick(responseobj[hl_obj].label, responseobj[hl_obj].c_sentence)}><TooltipComponent content={tooltip}>{responseobj[hl_obj].c_sentence}</TooltipComponent></div>);
     console.log(responseobj[hl_obj].c_sentence);
   }
 
@@ -70,64 +71,57 @@ const ReportProcessed = () => {
     ];
     
   let paichartdata3 = [];
-  for (const [key, value] of Object.entries(stateData.score_presence_count_json)) {
+  for (const [key, value] of Object.entries(stateData.score_presence_data)) {
     paichartdata3.push({ x: key, y: value, text: value });
   }
 
   let paichartdata4 = [];
   for (const [key, value] of Object.entries(stateData.class_analysis_data)) {
-    paichartdata3.push({ x: key, y: value, text: value });
+    paichartdata4.push({ x: key, y: value, text: value });
   }
   console.log(hl_resp);
 
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-      <Header category="Page" title="Processed Report" />
-      <h3>Title: {location.state.title}</h3>
-      <h3>Content: {hl_resp }</h3>  
+      <Header title="Processed Report" />
+      <p class="text-lg font-bold">Title: {location.state.title}</p>
+      <p class="text-lg font-bold">Domain: {location.state.domain}</p>
         <div className="flex flex-col md:flex-row flex-wrap gap-4" align="center">
-        <table> 
-          <thead>
-          <td>
-            <ChartsHeader category="Pie" title="Document Risk Score" /> 
-            </td>
-          <td>
-            <ChartsHeader category="Pie" title="Context Count" />
-          </td>
-          <td>
-            <ChartsHeader category="Pie" title="Context Count" />
-          </td>
-          <td>
-            <ChartsHeader category="Pie" title="Class Risk" />
-          </td>
-          </thead>
+        <table width="100%">
           <tbody>
           <tr align="center">
               <td>
-                <div className="w-full">
-                  <PieChart id="chart-pie1" data={paichartdata1} legendVisiblity height="full" />
+                <div className="w-full" >
+                  <b>Document Risk Chart:</b> 
+                  <PieChart id="chart-pie1" data={paichartdata1} legendVisiblity height="200" width="200"/>
                 </div>
               </td>
               <td>
                 <div className="w-full">
-                  <PieChart id="chart-pie2" data={paichartdata2} legendVisiblity height="full" />
+                  <b>Context Count Chart:</b> 
+                  <PieChart id="chart-pie2" data={paichartdata2} legendVisiblity height="200" width="200"  />
                 </div>
               </td>
               <td>
                 <div className="w-full">
-                  <PieChart id="chart-pie3" data={paichartdata3} legendVisiblity height="full" />
+                  <b>Presence Count Chart:</b>
+                  <PieChart id="chart-pie3" data={paichartdata3} legendVisiblity height="200" width="200" />
                 </div>
               </td>
               <td>
               <div className="w-full">
-                <PieChart id="chart-pie4" data={paichartdata4} legendVisiblity height="full" />
+                <b>Class Strength Chart:</b> 
+                <PieChart id="chart-pie4" data={paichartdata4} legendVisiblity height="200" width="200" />
               </div>
               </td>
           </tr>
           </tbody>
       </table>   
-      </div>   
+      </div>  
+      <b>Content: </b> {hl_resp }
+      <br/>
+      <div className="message"><b>Message: </b> {message ? <p>{message}</p> : null}</div>
     </div>
   );
 };
-export default ReportProcessed;
+export default TxtAnalysisReport;

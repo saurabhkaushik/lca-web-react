@@ -1,0 +1,7 @@
+{ 
+    "DOMAINS" : {
+        "liabilities": {"function" : "Financial", "threshold" : 98}, 
+        "esg" : {"function" : "Sustainability", "threshold" : 85} 
+    },
+    "API_SERVER" : "http://localhost:8080"
+}

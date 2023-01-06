@@ -4,13 +4,14 @@ import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, Context
 
 import { contextMenuItems, seedsGrid } from '../data/dummy';
 import { Header } from '../components';
+import configData from "../config.json";
 
 const Seeds = () => {
   const editing = { allowDeleting: true, allowEditing: true };
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [users, setUsers] = useState([]);
-  const texturl = 'http://localhost:8080/seed_data_list_api';
+  const texturl = configData.API_SERVER + '/seed_data_list_api';
   const domain = 'liabilities';
   
   useEffect(() => {fetch(texturl, {

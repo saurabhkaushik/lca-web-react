@@ -3,19 +3,19 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { Header } from '../components';
+import configData from "../config.json";
 
-const ReportAnalysis = () => {
-  const classurl = 'http://localhost:8080/contract_new_api';
-  const texturl = 'http://localhost:8080/text_analysis_api';
+const ReportAnalyser = () => {
+  const classurl = configData.API_SERVER + '/contract_new_api';
+  const texturl = configData.API_SERVER + '/text_analysis_api';
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [message, setMessage] = useState()
-  const domain = 'liabilities';
-  const threshold = 98;
+  const [message, setMessage] = useState("");
+  const [domain, setDomain] = useState("liabilities");
+  const thresholds = [98, 85];
+  let threshold = thresholds[0];
   const navigate = useNavigate();
-  let submit_type = '';
   let formurl = '';
-
   const state = {
     submit_type: '',
   };
@@ -23,6 +23,13 @@ const ReportAnalysis = () => {
   let handleSubmit1 = async (e) => {
     e.preventDefault();
     formurl = classurl;
+    if (domain == 'liabilities') {
+      threshold = thresholds[0];
+    } 
+    if (domain == 'esg') {
+      threshold = thresholds[1];
+    }
+    console.log(domain + " : " + threshold);
     try {
       let res = await fetch(formurl, {
         method: "POST",
@@ -36,8 +43,9 @@ const ReportAnalysis = () => {
       });
       let resJson = await res.json();
       if (res.status === 200) {
-        navigate('/reportprocessed', { state: { title: resJson.title, content: resJson.highlight_response, domain: domain, 
+        navigate('/txtreport', { state: { title: resJson.title, content: resJson.highlight_response, domain: domain, 
           score_report_json: resJson.score_report_json, score_context_count_json : resJson.score_context_count_json, 
+          score_presence_data: resJson.score_presence_data,
           score_presence_count_json : resJson.score_presence_count_json, class_analysis_data: resJson.class_analysis_data } });
       } else {
         setMessage("Some error occured");
@@ -58,12 +66,12 @@ const ReportAnalysis = () => {
           title: title,
           content: content,
           domain: domain,
-          threshold: threshold,
         }),
       });
       let resJson = await res.json();
       if (res.status === 200) {
-        navigate('/textreport', { state: { title: resJson.title, content: resJson.text_analysis_response, report : resJson.report_data, domain: domain } });
+        navigate('/numreport', { state: { title: resJson.title, content: resJson.text_analysis_response, 
+          amount_total : resJson.amount_total, label_total : resJson.label_total, domain: domain } });
       } else {
         setMessage("Some error occured");
       }
@@ -74,13 +82,17 @@ const ReportAnalysis = () => {
 
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-      <Header category="App" title="Report Analysis" />
-      <form >
-        <input name="title" className="e-input" type="text" placeholder="Enter Name" onChange={(e) => setTitle(e.target.value)}/>
+      <Header title="Report Analyser" />      
+      <form ><b>Domain : </b>
+        <select name="domain" defaultValue="liabilities" onChange={(e) => setDomain(e.target.value)}> 
+          <option value='liabilities'>Financial</option>
+          <option value='esg'>Sustainability</option>
+        </select>
+        <input name="title" className="e-input" type="text" placeholder="Enter the Title" onChange={(e) => setTitle(e.target.value)}/>
         <textarea name="content"
           placeholder="Copy the Report Text"
           rows="12"
-          cols="50"
+          cols="100"
           maxLength="10000"
           defaultValue={content}
           className="border border-dark"
@@ -88,13 +100,12 @@ const ReportAnalysis = () => {
         
         <div className="mx-auto"> 
           <table><tbody><tr>
-            <td><ButtonComponent name='class_analysis' type="submit" onClick={handleSubmit1}>Class Analysis</ButtonComponent></td>
-            <td><ButtonComponent name='text_analysis' type="submit" onClick={handleSubmit2}>Text Analysis</ButtonComponent></td></tr>
+            <td><ButtonComponent name='class_analysis' type="submit" onClick={handleSubmit1}>Text Analysis</ButtonComponent></td>
+            <td><ButtonComponent name='text_analysis' type="submit" onClick={handleSubmit2}>Number Analysis</ButtonComponent></td></tr>
             </tbody></table>
         </div>
-        <div className="message">{message ? <p>{message}</p> : null}</div>
       </form>
     </div>
   );
 };
-export default ReportAnalysis;
+export default ReportAnalyser;

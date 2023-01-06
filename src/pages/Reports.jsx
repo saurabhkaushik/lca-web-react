@@ -4,6 +4,7 @@ import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, Context
 
 import { contextMenuItems, reportsGrid } from '../data/dummy';
 import { Header } from '../components';
+import configData from "../config.json";
 
 const Reports = () => {
   const editing = { allowDeleting: true, allowEditing: true };
@@ -11,7 +12,7 @@ const Reports = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [users, setUsers] = useState([]);
 
-  const texturl = 'http://localhost:8080/contract_list_api';
+  const texturl = configData.API_SERVER + '/contract_list_api';
   const domain = 'liabilities';
 
   useEffect(() => {

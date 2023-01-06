@@ -441,7 +441,7 @@ export const links = [
         icon: <FiEdit />,
       },
       {
-        name: 'reportanalysis',
+        name: 'analyser',
         icon: <FiEdit />,
       },
     ],
@@ -455,6 +455,10 @@ export const links = [
       },
       {
         name: 'reports',
+        icon: <FiEdit />,
+      },
+      {
+        name: 'backend',
         icon: <FiEdit />,
       },
     ],

@@ -1,11 +1,10 @@
 {
-  "name": "project_syncfusion_dashboard",
+  "name": "botreload_risk_analyser",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.2",
     "@syncfusion/ej2": "^19.4.48",
     "@syncfusion/ej2-react-buttons": "^19.4.48",
     "@syncfusion/ej2-react-calendars": "^19.4.48",
