@@ -11,6 +11,8 @@ WORKDIR /react-app
 COPY ./package.json /react-app
 RUN npm install
 
+ENV AI_SRV_URL 'http://localhost:8080'
+
 # Copying all the files in our project
 COPY . .
 

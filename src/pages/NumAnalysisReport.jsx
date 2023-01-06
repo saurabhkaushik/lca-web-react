@@ -1,20 +1,20 @@
 import React from 'react';
-const editing = { allowDeleting: true, allowEditing: true };
 
-import { useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Filter, Page, ExcelExport, PdfExport, Edit, Inject } from '@syncfusion/ej2-react-grids';
 import { contextMenuItems, text_report_Grid } from '../data/dummy';
-import { Header } from '../components';
-import { Pie as PieChart } from '../components';
+import { Header, Pie as PieChart } from '../components';
+
+const editing = { allowDeleting: true, allowEditing: true };
 
 const NumAnalysisReport = () => {
   const location = useLocation();
-  let contentlist = location.state.content; 
-  let amount_total = location.state.amount_total; 
-  let label_total = location.state.label_total; 
+  const contentlist = location.state.content;
+  const { amount_total } = location.state;
+  const { label_total } = location.state;
 
-  let paichartdata = [];
+  const paichartdata = [];
   for (const [key, value] of Object.entries(label_total)) {
     paichartdata.push({ x: key, y: value, text: value });
   }
@@ -23,9 +23,9 @@ const NumAnalysisReport = () => {
       <Header title="Number Analysis Report " />
       <h3>Total Liabilities: ${amount_total.total} </h3>
 
-      <div className="w-full" >
-        <PieChart id="chart-pie" data={paichartdata} legendVisiblity height="200" width="200"/>
-      </div>   
+      <div className="w-full">
+        <PieChart id="chart-pie" data={paichartdata} legendVisiblity height="200" width="200" />
+      </div>
 
       <GridComponent
         id="gridcomp1"
@@ -42,7 +42,7 @@ const NumAnalysisReport = () => {
           {text_report_Grid.map((item, index) => <ColumnDirective key={index} {...item} />)}
         </ColumnsDirective>
         <Inject services={[Resize, Sort, ContextMenu, Filter, Page, ExcelExport, Edit, PdfExport]} />
-      </GridComponent>         
+      </GridComponent>
     </div>
   );
 };
