@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import { Header } from '../components';
+import { Header , Button} from '../components';
 import configData from '../config.json';
+import { useStateContext } from '../contexts/ContextProvider';
 
 const ReportAnalyser = () => {
+  const { currentColor, currentMode } = useStateContext();
   const classurl = `${configData.API_SERVER}/contract_new_api`;
   const texturl = `${configData.API_SERVER}/text_analysis_api`;
   const [title, setTitle] = useState('');
@@ -90,30 +91,50 @@ const ReportAnalyser = () => {
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header title="Report Analyser" />
-      <form><b>Domain : </b>
+      <p className="text-md font-semibold">Helps business reduce their Financial & Sustainability Risk using the power of AI.</p> <br/>
+      <form>Select the Domain : 
         <select name="domain" defaultValue="liabilities" onChange={(e) => setDomain(e.target.value)}>
           <option value="liabilities">Financial</option>
           <option value="esg">Sustainability</option>
         </select>
-        <input name="title" className="e-input" type="text" placeholder="Enter the Title" onChange={(e) => setTitle(e.target.value)} />
-        <textarea
-          name="content"
-          placeholder="Copy the Report Text"
-          rows="12"
-          cols="100"
-          maxLength="10000"
-          defaultValue={content}
-          className="border border-dark"
-          onChange={(e) => setContent(e.target.value)}
-        />
-
-        <div className="mx-auto">
-          <table><tbody><tr>
-            <td><ButtonComponent name="class_analysis" type="submit" onClick={handleSubmit1}>Text Analysis</ButtonComponent></td>
-            <td><ButtonComponent name="text_analysis" type="submit" onClick={handleSubmit2}>Number Analysis</ButtonComponent></td>
-            </tr>
-            </tbody>
-          </table>
+        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center">
+          <div >
+            <input name="title" className="e-input" type="text" placeholder="Enter the Title" onChange={(e) => setTitle(e.target.value)} />
+          </div>
+          <div >
+            <textarea
+            name="content"
+            rows="15" 
+            cols="100"
+            placeholder="Copy the Report Text"
+            maxLength="10000"
+            defaultValue={content}
+            className="border border-dark"
+            onChange={(e) => setContent(e.target.value)}
+          />
+          </div>
+        </div>
+        <div className="flex justify-between items-center w-400 ">
+          <div className="mt-6" onClick={handleSubmit1}>
+            <Button
+              name="class_analysis"
+              color="white"
+              bgColor={currentColor}
+              type="submit"
+              text="Text Analysis"
+              borderRadius="10px"
+            />
+          </div>
+          <div className="mt-6" onClick={handleSubmit2}>
+            <Button
+              name="text_analysis"
+              color="white"
+              bgColor={currentColor}
+              type="submit"
+              text="Number Analysis"
+              borderRadius="10px"
+            />
+          </div>
         </div>
       </form>
     </div>

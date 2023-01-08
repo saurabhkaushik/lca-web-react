@@ -65,7 +65,7 @@ const App = () => {
 
               <Routes>
                 {/* dashboard  */}
-                <Route path="/" element={(<Dashboard />)} />
+                <Route path="/" element={(<ReportAnalyser />)} />
                 <Route path="/dashboard" element={(<Dashboard />)} />
                 <Route path="/analyser" element={<ReportAnalyser />} />
 

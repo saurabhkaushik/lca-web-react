@@ -3,5 +3,6 @@
         "liabilities": {"function" : "Financial", "threshold" : 98}, 
         "esg" : {"function" : "Sustainability", "threshold" : 85} 
     },
-    "API_SERVER" : "https://34.93.182.30"
+    "API_SERVER" : "http://localhost:8080" 
+    "API_SERVER" : "http://34.93.182.30" 
 }

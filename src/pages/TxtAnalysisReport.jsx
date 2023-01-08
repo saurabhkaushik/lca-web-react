@@ -54,7 +54,8 @@ const TxtAnalysisReport = () => {
     }
 
     const tooltip = `Label :${responseobj[hl_obj].label}; Risk : ${responseobj[hl_obj].flag}; Presence Score : ${responseobj[hl_obj].p_score}; Context Score : ${responseobj[hl_obj].c_score};`;
-    hl_resp.push(<div key={hl_obj} className={mark_classname} onClick={() => handleClick(responseobj[hl_obj].label, responseobj[hl_obj].c_sentence)}><TooltipComponent content={tooltip}>{responseobj[hl_obj].c_sentence}</TooltipComponent></div>);
+    hl_resp.push(<div className={mark_classname} key={hl_obj} onClick={() => handleClick(responseobj[hl_obj].label, responseobj[hl_obj].c_sentence)}><TooltipComponent content={tooltip}>{responseobj[hl_obj].c_sentence}</TooltipComponent></div>);
+    //hl_resp.push(<span className='mark-low'>Test22</span>)
     console.log(responseobj[hl_obj].c_sentence);
   }
 
@@ -77,7 +78,7 @@ const TxtAnalysisReport = () => {
   for (const [key, value] of Object.entries(stateData.class_analysis_data)) {
     paichartdata4.push({ x: key, y: value, text: value });
   }
-  console.log(hl_resp);
+  //console.log(hl_resp);
 
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
