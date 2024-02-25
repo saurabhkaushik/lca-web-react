@@ -1,5 +1,5 @@
 {
-  "name": "botreload_risk_analyser",
+  "name": "bt-recruit-assist",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,6 +21,7 @@
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-bootstrap":"^2.10.1",
     "dotenv":"16.0.3"
   },
   "scripts": {

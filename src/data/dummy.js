@@ -441,24 +441,15 @@ export const links = [
         icon: <FiEdit />,
       },
       {
-        name: 'analyser',
-        icon: <FiEdit />,
-      },
-    ],
-  },
-  {
-    title: 'Admin',
-    links: [
-      {
-        name: 'seeds',
+        name: 'MatchAssessment',
         icon: <FiEdit />,
       },
       {
-        name: 'reports',
+        name: 'InitialPitch',
         icon: <FiEdit />,
       },
       {
-        name: 'backend',
+        name: 'ScreeningInterview',
         icon: <FiEdit />,
       },
     ],

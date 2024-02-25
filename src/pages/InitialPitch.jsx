@@ -5,7 +5,7 @@ import { Header, Pie as PieChart } from '../components';
 
 import configData from '../config.json';
 
-const TxtAnalysisReport = () => {
+const InitialPitch = () => {
   const location = useLocation();
   const stateData = location.state;
   const responseobj = stateData.content;
@@ -123,4 +123,4 @@ const TxtAnalysisReport = () => {
     </div>
   );
 };
-export default TxtAnalysisReport;
+export default InitialPitch;

@@ -8,7 +8,7 @@ import { Header, Pie as PieChart } from '../components';
 
 const editing = { allowDeleting: true, allowEditing: true };
 
-const NumAnalysisReport = () => {
+const ScreeningInterview = () => {
   const location = useLocation();
   const contentlist = location.state.content;
   const { amount_total } = location.state;
@@ -46,4 +46,4 @@ const NumAnalysisReport = () => {
     </div>
   );
 };
-export default NumAnalysisReport;
+export default ScreeningInterview;
