@@ -4,7 +4,7 @@ import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Dashboard, Seeds, ReportProcessed, Reports, TextReport, ReportAnalysis } from './pages';
+import { Dashboard, ReportAnalyser, MatchAssessment, InitialPitch, ScreeningInterview } from './pages';
 import './App.css';
 
 import { useStateContext } from './contexts/ContextProvider';
@@ -66,17 +66,10 @@ const App = () => {
               <Routes>
                 {/* dashboard  */}
                 <Route path="/" element={(<Dashboard />)} />
-                <Route path="/dashboard" element={(<Dashboard />)} />
-                <Route path="/reportprocessed" element={<ReportProcessed />} />
-
-                {/* admin  */}
-                <Route path="/seeds" element={<Seeds />} />
-                <Route path="/reports" element={<Reports />} />
-
-                {/* pages  */}
-                <Route path="/textreport" element={<TextReport />} />
-                <Route path="/reportanalysis" element={<ReportAnalysis />} />
-
+                <Route path="/Dashboard" element={(<Dashboard />)} />
+                <Route path="/MatchAssessment" element={<MatchAssessment />} />
+                <Route path="/InitialPitch" element={<InitialPitch />} />
+                <Route path="/ScreeningInterview" element={<ScreeningInterview />} />
               </Routes>
             </div>
             <Footer />

@@ -1,11 +1,10 @@
 {
-  "name": "project_syncfusion_dashboard",
+  "name": "bt-recruit-assist",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.2",
     "@syncfusion/ej2": "^19.4.48",
     "@syncfusion/ej2-react-buttons": "^19.4.48",
     "@syncfusion/ej2-react-calendars": "^19.4.48",
@@ -21,10 +20,12 @@
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "5.0.0"
+    "react-scripts": "5.0.0",
+    "react-bootstrap":"^2.10.1",
+    "dotenv":"16.0.3"
   },
   "scripts": {
-    "start": "export PORT=8082 && react-scripts start",
+    "start": "export PORT=8080 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
