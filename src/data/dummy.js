@@ -441,6 +441,7 @@ export const links = [
         icon: <FiEdit />,
       },
       {
+<<<<<<< HEAD
         name: 'analyser',
         icon: <FiEdit />,
       },
@@ -451,10 +452,17 @@ export const links = [
     links: [
       {
         name: 'seeds',
+=======
+        name: 'MatchAssessment',
+>>>>>>> 177838a284465e15a4696c6b819f4632c9c57e30
         icon: <FiEdit />,
       },
       {
-        name: 'reports',
+        name: 'InitialPitch',
+        icon: <FiEdit />,
+      },
+      {
+        name: 'ScreeningInterview',
         icon: <FiEdit />,
       },
       {
