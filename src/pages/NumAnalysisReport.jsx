@@ -8,21 +8,8 @@ import { Header, Pie as PieChart } from '../components';
 
 const editing = { allowDeleting: true, allowEditing: true };
 
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:src/pages/ScreeningInterview.jsx
->>>>>>> parent of 177838a (YEs)
-<<<<<<<< HEAD:src/pages/NumAnalysisReport.jsx
 const NumAnalysisReport = () => {
-========
-const ScreeningInterview = () => {
->>>>>>>> 177838a284465e15a4696c6b819f4632c9c57e30:src/pages/ScreeningInterview.jsx
-<<<<<<< HEAD
-=======
-========
-const NumAnalysisReport = () => {
->>>>>>>> parent of 177838a (YEs):src/pages/NumAnalysisReport.jsx
->>>>>>> parent of 177838a (YEs)
+
   const location = useLocation();
   const contentlist = location.state.content;
   const { amount_total } = location.state;
@@ -60,18 +47,6 @@ const NumAnalysisReport = () => {
     </div>
   );
 };
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:src/pages/ScreeningInterview.jsx
->>>>>>> parent of 177838a (YEs)
-<<<<<<<< HEAD:src/pages/NumAnalysisReport.jsx
+
 export default NumAnalysisReport;
-========
-export default ScreeningInterview;
->>>>>>>> 177838a284465e15a4696c6b819f4632c9c57e30:src/pages/ScreeningInterview.jsx
-<<<<<<< HEAD
-=======
-========
-export default NumAnalysisReport;
->>>>>>>> parent of 177838a (YEs):src/pages/NumAnalysisReport.jsx
->>>>>>> parent of 177838a (YEs)
+

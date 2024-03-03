@@ -4,15 +4,8 @@ import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { Dashboard, ReportAnalyser, TxtAnalysisReport, NumAnalysisReport, Reports, Seeds, AIAdminService } from './pages';
-=======
-import { Dashboard, ReportAnalyser, MatchAssessment, InitialPitch, ScreeningInterview } from './pages';
->>>>>>> 177838a284465e15a4696c6b819f4632c9c57e30
-=======
-import { Dashboard, ReportAnalyser, TxtAnalysisReport, NumAnalysisReport, Reports, Seeds, AIAdminService } from './pages';
->>>>>>> parent of 177838a (YEs)
+
 import './App.css';
 
 import { useStateContext } from './contexts/ContextProvider';
@@ -73,10 +66,6 @@ const App = () => {
 
               <Routes>
                 {/* dashboard  */}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 177838a (YEs)
                 <Route path="/" element={(<ReportAnalyser />)} />
                 <Route path="/dashboard" element={(<Dashboard />)} />
                 <Route path="/analyser" element={<ReportAnalyser />} />
@@ -89,16 +78,7 @@ const App = () => {
                 <Route path="/seeds" element={<Seeds />} />
                 <Route path="/reports" element={<Reports />} />
                 <Route path="/backend" element={<AIAdminService />} />
-<<<<<<< HEAD
-=======
-                <Route path="/" element={(<Dashboard />)} />
-                <Route path="/Dashboard" element={(<Dashboard />)} />
-                <Route path="/MatchAssessment" element={<MatchAssessment />} />
-                <Route path="/InitialPitch" element={<InitialPitch />} />
-                <Route path="/ScreeningInterview" element={<ScreeningInterview />} />
->>>>>>> 177838a284465e15a4696c6b819f4632c9c57e30
-=======
->>>>>>> parent of 177838a (YEs)
+
               </Routes>
             </div>
             <Footer />
