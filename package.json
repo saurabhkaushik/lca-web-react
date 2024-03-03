@@ -1,9 +1,13 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "name": "botreload_risk_analyser",
 =======
   "name": "bt-recruit-assist",
 >>>>>>> 177838a284465e15a4696c6b819f4632c9c57e30
+=======
+  "name": "botreload_risk_analyser",
+>>>>>>> parent of 177838a (YEs)
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -26,9 +30,12 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     "react-bootstrap":"^2.10.1",
 >>>>>>> 177838a284465e15a4696c6b819f4632c9c57e30
+=======
+>>>>>>> parent of 177838a (YEs)
     "dotenv":"16.0.3"
   },
   "scripts": {

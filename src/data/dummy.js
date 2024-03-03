@@ -442,6 +442,9 @@ export const links = [
       },
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 177838a (YEs)
         name: 'analyser',
         icon: <FiEdit />,
       },
@@ -452,17 +455,20 @@ export const links = [
     links: [
       {
         name: 'seeds',
+<<<<<<< HEAD
 =======
         name: 'MatchAssessment',
 >>>>>>> 177838a284465e15a4696c6b819f4632c9c57e30
+=======
+>>>>>>> parent of 177838a (YEs)
         icon: <FiEdit />,
       },
       {
-        name: 'InitialPitch',
+        name: 'reports',
         icon: <FiEdit />,
       },
       {
-        name: 'ScreeningInterview',
+        name: 'backend',
         icon: <FiEdit />,
       },
       {
